@@ -99,7 +99,7 @@ def compute_step_metrics(df):
         "Hold PWM (%)": avg_pwm
     }
 
-st.sidebar.header("🎛️ PID Tuning & Filter Controls")
+st.sidebar.header("🎛️ PID & Filter Controls")
 tuning_preset = st.sidebar.radio("PID Tuning Mode", ("Auto-Tuned (Anti-Windup + D-Filter)", "Untuned Aggressive Baseline", "Manual Custom Gains"))
 
 if tuning_preset == "Auto-Tuned (Anti-Windup + D-Filter)":
@@ -118,7 +118,7 @@ ambient_c = st.sidebar.slider("Ambient Lab Temp (°C)", 15.0, 35.0, 25.0, 0.5)
 fault_sim = st.sidebar.selectbox("Hardware Fault Injection", ("Nominal Hardware (Healthy)", "Heater Degradation (-40% Power)", "Thermistor Drift (+0.015°C/s)", "Cooling Fan Failure"))
 sim_seed = st.sidebar.slider("Thermistor Noise Seed", 1, 50, 12)
 st.sidebar.markdown("---")
-st.sidebar.info("**Academic Transparency Note:** Simulation only. Not hardware-validated. Illustrative specs for a time-compressed (240s) lumped-capacitance LAMP thermal model.")
+st.sidebar.info("**Note:** Software simulation only (time-compressed 240s thermal model) used to test PID parameters before connecting physical heater hardware.")
 
 st.title("🌡️ BioThermo-PID: Closed-Loop Controller Simulation")
 st.markdown("**Time-Compressed LAMP/PCR Thermal Cycler Model, Anti-Windup PID & Hardware Fault Diagnostics**")
